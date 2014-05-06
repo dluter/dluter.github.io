@@ -1,0 +1,42 @@
+*******************************************************************************
+                    CONTROL SVN IN COMMAND LINE
+*******************************************************************************
+[info]
+svn info
+
+[checkout]
+# checkout a working copy from repository
+svn co url
+
+[log]
+svn log file_path
+
+[diff]
+svn diff -r 26:27 file_path
+
+# force run diff
+svn diff --force file_path
+
+[merge]
+# revert file to revision
+svn merge -r 27:26 file_path
+
+[status]
+svn st
+
+[add]
+# add file to repository
+svn add file_path
+
+[rm]
+# delete file from repository
+svn rm file_path
+
+[commit]
+svn commit -m "Revert wrong change from r27"
+
+[update]
+svn update file_path -r 200
+
+[export]
+svn export
