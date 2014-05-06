@@ -1,0 +1,49 @@
+body {
+	font-family: 'consolas';
+}
+
+a {
+	line-height: 1.6;
+	letter-spacing: 1.6px;
+	text-align: center;
+}
+
+a.no_underline{
+	text-decoration: none;
+}
+
+h3 {
+	margin: 4px 4px 4px 4px;
+	text-align: center;
+	color: darkcyan;
+	padding-top: 4px;
+}
+
+p.right {
+	text-align: right;
+}
+
+div.notes {
+	background: #d3d3d3;
+	margin: 4px 4px 4px 4px;
+	padding: 0px 4px 0px 4px;
+}
+
+div.links {
+	padding: 0px 4px 0px 4px;
+	border-style: solid solid solid solid;
+	border-width: 2px;
+	border-color: dimgray;
+}
+
+a:visited {
+	background-color: #FFFF85;
+}
+
+a:hover {
+	background-color: #FF704D;
+}
+
+a:active {
+	background-color: #FF704D;
+}
