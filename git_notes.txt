@@ -1,0 +1,156 @@
+*******************************************************************************
+                    CONTROL GIT IN COMMAND LINE
+*******************************************************************************
+
+[install]
+  Windows: msysgit(https://code.google.com/p/msysgit/)
+  Ubuntu: sudo apt-get install git-core gitg (gitg is a GUI git software on Ubuntu)
+  Mac: brew install git
+
+[version]
+  git --version
+
+[init]
+  git init repo_name (init empty git repository named repo_name)
+  git init --bare repo_name (create a bare repository)
+
+[clone]
+  git clone (clone git repository)
+  git clone --bare (clone git repository without .git directory)
+  git clone repo1 repo2 (backup repository)
+
+[configure]
+  git config (set option for current project)
+  git config --global (set option for current user)
+  git config --system (set option for whole system)
+  git config --unset (unset option)
+  git config --list (show all config for current repo)
+  git config user.name xxoo (set xxoo as user name)
+  git config user.email xx@oo.io (set email)
+  git config alias.st status (alias st for status)
+  git config color.ui auto --global (enable color in ui)
+  git config core.editor vim --global (set default editor as vim)
+
+[status]
+  git status -uno [-uall -unormal] (don't show untracked files)
+  git status -s (short-format output)
+
+[add]
+  git add (add file content to index)
+  git add -u (add all modified tracked files)
+  git add -A (add all contents as staged)
+
+[rm]
+  git rm (remove file from working tree and index)
+
+[diff]
+  git diff (to see unstaged changes)
+  git diff --cached (to see staged changes)
+  git diff HEAD (to see changes with last commit)
+  git diff --stat
+  git diff --checked (to see unused whitespace)
+
+[commit]
+  git commit -m "some words for this commit." (commit with one line words.)
+  git commit --amend (modify last commit information)
+  git commit (this will lead to commit default editor)
+
+[push]
+  NOTE!!! avoid non-fast-forward(force update).
+  git push -f
+  git push <remote> <local_branch>:<remote_branch> (push local branch to remote branch)
+
+[pull]
+  git pull (fetch remote and merge to local)
+  git pull <remote> <local_branch>:<remote_branch> (fetch remote repos and merge to local branch)
+
+[branch]
+  new branch
+  git branch branch_name (new branch)
+  git checkout -b <branch> (new branch and checkout to it)
+
+  delete local branch
+  git branch -d branch_name (delete local branch)
+  git branch -D branch_name (force delete branch)
+
+  delete remote branch
+  git push <remote> :<branch_name>
+
+  rename branch
+  git branch -m old_name new_name (rename branch name)
+  git branch -M old_name new_name (force rename branch)
+
+  git branch -v (show last commit information)
+
+  track remote branch
+  git checkout --track <remote>/<branch>
+  git checkout -b <branch> <remote>/<branch> (switch to new branch based on remote,
+  new branch name can be different from remote.)
+
+[tag]
+  git tag (show all tags)
+  git tag -a <tag_name> -m "tag message" (create tag)
+  git push <remote> <tag_name> (push tag to remote)
+  git push <remote> --tags (push all local new tags to remote)
+  git tag -d <tag_name> (delete local tag)
+  git push <remote> :refs/tags/<tag_name> (delete remote tag)
+  git diff tag1 tag2 --stat (show difference between tags)
+
+[merge/rebase]
+  git merge <branch>/<tag>/<sha1> (merge target to current)
+  git rebase <branch> (rebase current branch to target branch)
+
+[cherry-pick]
+
+     git cherry-pick <commit id>
+
+[reset]
+  git reset HEAD <file> (remove file from cache)
+
+  reset branch to one commit
+  git reset --hard commit_sha
+
+  reset branch to last N commit
+  git reset --hard HEAD~[N]
+
+[remote]
+  git remote -v (view existing remotes)
+  git remote set-url <remote> new_url (set/reset remote repository url)
+  git remote update (fetch from all remotes)
+  git remote prune <remote> (remove any old, conflicting branches)
+  git remote show <remote> (show info of remote)
+  git remote update (update remote to local)
+  git remote add <name> url (add remote repository, can be more than one)
+  git remote rename <old_name> <new_name> (rename remote repo)
+  git remote rm <name> (remove remote repository)
+
+[stash]
+  git stash (stash modified content to avoid commit)
+  git stash (save current dirty tree to a stash)
+  git stash list (list all current stashes)
+  git stash show (show detail info of stash)
+  git stash drop (remove stash from stash list)
+  git stash clear (remove all cached stashes)
+  git stash pop [index] (remove stash or stashes and apply it to working tree)
+
+
+[filter]
+  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='xxoo'; \
+            GIT_AUTHOR_EMAIL='oo@xx.io'; GIT_COMMITTER_NAME='ooxx'; \
+            GIT_COMMITTER_EMAIL='xx@oo.io';" HEAD
+
+  git filter-branch --commit-filter '
+        if [ "$GIT_COMMITTER_NAME" = "<Old Name>" ];
+        then
+                GIT_COMMITTER_NAME="<New Name>";
+                GIT_AUTHOR_NAME="<New Name>";
+                GIT_COMMITTER_EMAIL="<New Email>";
+                GIT_AUTHOR_EMAIL="<New Email>";
+                git commit-tree "$@";
+        else
+                git commit-tree "$@";
+        fi' HEAD
+
+*******************************************************************************
+         MAY THE FORCE BE WITH YOU!                          by:Dawson Dong
+*******************************************************************************
