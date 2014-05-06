@@ -1,10 +1,11 @@
 body {
 	font-family: 'consolas';
+	color: silver;
 }
 
 a {
 	line-height: 1.6;
-	letter-spacing: 1.6px;
+	letter-spacing: 0.75px;
 	text-align: center;
 }
 
@@ -15,35 +16,27 @@ a.no_underline{
 h3 {
 	margin: 4px 4px 4px 4px;
 	text-align: center;
-	color: darkcyan;
+	color: dodgerblue;
 	padding-top: 4px;
 }
 
-p.right {
+div.right {
 	text-align: right;
 }
 
-div.notes {
+p.indent1{
+	margin-left: 20px;
+}
+
+div.block {
 	background: #d3d3d3;
-	margin: 4px 4px 4px 4px;
 	padding: 0px 4px 0px 4px;
+	border-style: solid solid solid solid;
+	border-color: rgb(0, 160, 164);
 }
 
 div.links {
-	padding: 0px 4px 0px 4px;
-	border-style: solid solid solid solid;
+	border-top-style: solid;
 	border-width: 2px;
 	border-color: dimgray;
-}
-
-a:visited {
-	background-color: #FFFF85;
-}
-
-a:hover {
-	background-color: #FF704D;
-}
-
-a:active {
-	background-color: #FF704D;
 }

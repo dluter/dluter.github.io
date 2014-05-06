@@ -1,0 +1,55 @@
+
+refer to:
+http://www.sqlite.org/sqlite.html
+http://www.tutorialspoint.com/sqlite/index.htm
+
+1. create or open existing database
+     sqlite3 test.db3
+
+2. create table for database
+     create table person(name TEXT NOT NULL, age INTERGER);
+     create table stuff(name TEXT NOT NULL PRIMARY KEY UNIQUE, age INTERGER);
+
+3. insert some values
+      INSERT INTO person VALUES ( "dawson", 11);
+      INSERT OR REPLACE INTO stuff VALUES ("dawson", "24");
+
+4. excute sql from file
+     .read insert.sql;
+
+5. do select operation
+     SELECT * FROM person WHERE name='dawson';
+     SELECT * FROM person WHERE name LIKE '%son';
+     SELECT * FROM person WHERE name LIKE '%n' LIMIT 10 OFFSET 5;
+
+6. set if display headers when show result
+     .headers ON
+     .headers OFF
+
+7. update column
+     UPDATE person SET age=30 WHERE name='dawson';
+
+8. delete column
+     DELETE FROM person WHREE name='vincent';
+     DELETE FROM person WHERE name LIKE '%son';
+
+9. see all database
+     .databases
+
+10. see all tables
+     .tables
+
+11. backup database
+     echo '.dump' | sqlite3 test.db3 | gzip -c > test.dump.gz
+
+12. restore database from dump file
+     zcat test.dump.gz | sqlite3 test
+
+13. show table column names
+     PRAGMA table_info(person);
+
+14. drop table
+     drop table [TAB_NAME];
+
+15. count
+     select count(path) from file where size>15000; 

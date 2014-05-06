@@ -1,0 +1,6 @@
+input
+  input keyevent
+
+pm
+  pm install
+  pm uninstall
